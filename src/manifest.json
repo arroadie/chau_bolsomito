@@ -3,7 +3,7 @@
 
   "name": "X-it",
   "description": "Random images for github ship comments",
-  "version": "0.1",
+  "version": "0.2",
 
   "background": {
     "page": "background.html",
