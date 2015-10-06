@@ -1,8 +1,8 @@
-# X-it
-Fast Ship-it - Chrome Extension :)
+# Chau Bolsimito
+Removedor de posts desinteressantes no Facebook - Chrome Extension :)
 
-No more delay to chose which fun emoji you will use to approve a pull request.
-Let the randomness make the decision
+Remove todos os posts da sua vista no facebook que possuam termos
+que você selecionou previamente.
 
 Strictly for fun
 
