@@ -1,29 +1,27 @@
 function storeThis(element) {
-
-	var id = Date.now() + Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(2);
-
-	chrome.storage.local.set({id: element}, function() {
-		chrome.runtime.sendMessage("CHANGE!");
-        });
+	// Reimplement
 }
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    // read `newIconPath` from request and read `tab.id` from sender
-    chrome.storage.local.get(null, function(stored) {
-		elem.style.display = 'block';
-		});
-});
-
-document.getElementById("contentArea").addEventListener("DOMSubtreeModified", function (){
-
-	var testElements = document.getElementsByClassName("userContentWrapper");
-
-	Array.prototype.filter.call(testElements, function(testElement) {
-		if ((testElement.innerText.indexOf('bolsomit') > -1) && (testElement.parentElement.parentElement.className.indexOf('bolsominated') === -1)) {
-				elem = testElement.parentElement.parentElement;
-				elem.classList.add("bolsominated");
-				elem.style.display = 'none';
-				storeThis(elem);
+var facebookContent = document.getElementById("contentArea")
+if (facebookContent != null) {
+		facebookContent.addEventListener("DOMSubtreeModified", function (){
+			var testElements = document.getElementsByClassName("fbUserPost");
+			if (testElements != null && testElements.length > 0 ) {
+                chrome.runtime.sendMessage({ refresh: true }, function (response) {
+                    if (response && response.length > 0) {
+                        for (f = 0; f < response.length; f++) {
+                            for (i = 0; i < testElements.length; i++) {
+                                // get the current filter elements
+                                if ((testElements[i].innerText.toLowerCase().indexOf(response[f]) > -1) && (testElements[i].parentElement.parentElement.className.indexOf('bolsominated') === -1)) {
+                                    elem = testElements[i].parentElement.parentElement;
+                                    elem.classList.add("bolsominated");
+                                    elem.style.display = 'none';
+                                    storeThis(elem);
+                                }
+                            }
+                        }
+                    }
+                });
 			}
-	});
-}, false);
+		}, false);
+}
